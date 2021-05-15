@@ -6,16 +6,14 @@ class login extends CI_Controller
         parent::__construct();
         $this->load->model('M_Akses', 'akses');
         $this->load->model('M_User', 'login');
-        $Akses = $this->akses->CekWaktu();
-        if (!$Akses) {
-            redirect('login');
-        }else{
-            redirect('admin/dashboard');
-        }
     }
 
     function index()
     {
+        $Akses = $this->akses->CekWaktu();
+        if ($Akses) {
+            redirect('admin/dashboard');
+        }
         $this->load->view('admin/v_login');
     }
 
@@ -36,7 +34,7 @@ class login extends CI_Controller
         } else {
             $response = ['icon' => 'error', 'title' => 'Gagal Login!', 'text' => 'Data user tidak ditemukan.'];
             $this->session->set_flashdata('msg', $response);
-            redirect('admin/login');
+            redirect('login');
         }
     }
 
