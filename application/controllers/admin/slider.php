@@ -49,7 +49,7 @@ class slider extends CI_Controller
         $x['menu'] = 'slider';
         $x['view'] = 'admin/slider/v_slider';
         $x['pagination'] = $this->pagination->create_links();
-        $x['breadcrumb'][] = array('Name' => 'slider', 'Url' => '', 'IsAktif' => 0);
+        $x['breadcrumb'][] = array('Name' => 'Slider', 'Url' => '', 'IsAktif' => 1);
 
         loadview($x);
     }

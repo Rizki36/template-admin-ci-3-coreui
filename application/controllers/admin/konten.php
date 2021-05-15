@@ -50,7 +50,7 @@ class konten extends CI_Controller
         $x['menu'] = $jenisKonten;
         $x['view'] = 'admin/konten/v_konten';
         $x['pagination'] = $this->pagination->create_links();
-        $x['breadcrumb'][] = array('Name' => $jenisKonten, 'Url' => '', 'IsAktif' => 0);
+        $x['breadcrumb'][] = array('Name' => ucfirst($jenisKonten), 'Url' => '', 'IsAktif' => 0);
 
         loadview($x);
     }
@@ -58,11 +58,31 @@ class konten extends CI_Controller
     public function tambah()
     {
         $jenisKonten = $this->uri->segment(4);
+     
         $data['jenisKonten'] = $jenisKonten;
         $data['menu'] = $jenisKonten;
+     
         $data['view'] = 'admin/konten/v_konten_tambah';
-        $data['breadcrumb'][] = array('Name' => $jenisKonten, 'Url' => '', 'IsAktif' => 1);
+        $data['breadcrumb'][] = array('Name' => ucfirst($jenisKonten), 'Url' => '', 'IsAktif' => 0);
+        $data['breadcrumb'][] = array('Name' => "Tambah Data", 'Url' => '', 'IsAktif' => 1);
+     
         loadview($data);
+    }
+    
+    public function edit()
+    {
+        $jenisKonten = $this->uri->segment(4);
+        $KodeKonten = base64_decode($this->uri->segment(5));
+
+        $x['jenisKonten'] = $jenisKonten;
+        $x['data'] = $this->konten->get_one_konten(array('KodeKonten' => $KodeKonten));
+
+        $x['menu'] = $jenisKonten;
+        $x['view'] = 'admin/konten/v_konten_tambah';
+        $x['breadcrumb'][] = array('Name' => ucfirst($jenisKonten), 'Url' => '', 'IsAktif' => 1);
+        $x['breadcrumb'][] = array('Name' => 'Edit Data', 'Url' => '', 'IsAktif' => 0);
+     
+        loadview($x);
     }
 
     public function setStatus()
@@ -91,7 +111,7 @@ class konten extends CI_Controller
         $id  = base64_decode($this->input->get('id'));
         $img  = $this->input->get('img');
         $result = $this->konten->delete_data_konten(['KodeKonten' => $id]);
-        
+
         if ($result) {
             delete_file("assets/img/$jenisKonten", $img);
             delete_file("assets/img/$jenisKonten", "thum_$img");
@@ -100,23 +120,8 @@ class konten extends CI_Controller
             $response = ['icon' => 'error', 'title' => 'Gagal menghapus data', 'text' => ''];
         }
         $this->session->set_flashdata('msg', $response);
-        
+
         redirect("admin/konten/$jenisKonten");
-    }
-
-    public function edit()
-    {
-        $jenisKonten = $this->uri->segment(4);
-        $KodeKonten = base64_decode($this->uri->segment(5));
-
-        $x['jenisKonten'] = $jenisKonten;
-        $x['data'] = $this->konten->get_one_konten(array('KodeKonten' => $KodeKonten));
-
-        $x['menu'] = $jenisKonten;
-        $x['view'] = 'admin/konten/v_konten_tambah';
-        $x['breadcrumb'][] = array('Name' => $jenisKonten, 'Url' => '', 'IsAktif' => 1);
-        $x['breadcrumb'][] = array('Name' => 'Edit Data ' . $jenisKonten, 'Url' => '', 'IsAktif' => 0);
-        loadview($x);
     }
 
     public function simpan()

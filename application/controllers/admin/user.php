@@ -52,7 +52,7 @@ class user extends CI_Controller
         $x['menu'] = 'user';
         $x['view'] = 'admin/user/v_user';
         $x['pagination'] = $this->pagination->create_links();
-        $x['breadcrumb'][] = array('Name' => "User", 'Url' => '', 'IsAktif' => 1);
+        $x['breadcrumb'][] = array('Name' => "Data User", 'Url' => '', 'IsAktif' => 1);
 
         loadview($x);
     }
