@@ -1,0 +1,94 @@
+/* avatar fileinput */
+.kv-avatar .krajee-default.file-preview-frame,
+.kv-avatar .krajee-default.file-preview-frame:hover {
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+	text-align: center;
+}
+
+.kv-avatar {
+	display: inline-block;
+	width: 100%;
+}
+
+.kv-avatar .file-input {
+	/* display: table-cell; */
+	width: 100%;
+}
+
+.kv-avatar .krajee-default.file-preview-frame .kv-file-content {
+	width: unset;
+	height: unset;
+}
+
+.kv-avatar .file-input .file-preview .file-drop-zone {
+	margin: unset;
+}
+
+.kv-avatar .file-input .file-preview .file-drop-zone .file-preview-thumbnails {
+	width: 100%;
+}
+
+.kv-avatar .file-input .file-preview .file-drop-zone .file-preview-thumbnails .file-default-preview {
+	width: 100%;
+}
+
+.kv-avatar .file-input .file-preview .file-drop-zone .file-preview-thumbnails .file-default-preview img {
+	width: 100%;
+}
+
+.kv-reqd {
+	color: red;
+	font-family: monospace;
+	font-weight: normal;
+}
+
+/* /avatar fileinput */
+
+/* validate */
+.form-control.error,
+.bootstrap-select.error>button {
+	border-color: #E04B4A;
+}
+
+label {
+	font-weight: 600;
+}
+
+label.error,
+label.valid {
+	color: #E04B4A;
+	margin-bottom: 0px;
+	margin-top: 3px;
+	font-size: 11px;
+	font-weight: normal;
+	width: 100%;
+}
+
+.form-control.valid,
+.bootstrap-select.valid>button {
+	border-color: #95b75d;
+}
+
+label.valid {
+	color: #95b75d;
+}
+
+.control-label.text-left {
+	text-align: left;
+}
+
+/* /validate */
+
+.text-dot {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.pesan-active{
+	font-weight: bolder;
+	color: #3c4b64;
+}

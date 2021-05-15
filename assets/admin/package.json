@@ -1,0 +1,22 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@coreui/chartjs": "^2.0.0",
+    "@coreui/coreui": "^3.4.0",
+    "@coreui/icons": "^2.0.0-beta.3",
+    "@coreui/utils": "^1.3.1",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@popperjs/core": "^2.5.4",
+    "chart.js": "^2.9.4",
+    "perfect-scrollbar": "1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
