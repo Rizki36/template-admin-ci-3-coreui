@@ -2,97 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gentelella Alela! | </title>
-
-    <!-- Bootstrap -->
-    <link href="<?= base_url('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<?= base_url('assets/admin/vendors/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?= base_url('assets/admin/vendors/nprogress/nprogress.css') ?>" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="<?= base_url('assets/admin/vendors/animate.css/animate.min.css') ?>" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="<?= base_url('assets/admin/css/custom.css') ?>" rel="stylesheet">
-    <style>
-        html,
-        body {
-            height: 0;
-        }
-
-        .login_wrapper {
-            right: 0px;
-            margin: 0px auto;
-            /* margin-top: 5%; */
-            /* max-width: 350px; */
-            width: 100vw;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            /* position: relative; */
-            display: flex;
-        }
-
-        .registration_form,
-        .login_form {
-            position: static;
-            /* top: 0px; */
-            /* width: 100%; */
-        }
-
-        .login_content{
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-    <script src="<?= base_url('assets/admin/js/sweetalert2.js') ?>"></script>
+    <?php $this->load->view('admin/layout/_head') ?>
 </head>
 
-<body class="login">
-    <div>
-        <a class="hiddenanchor" id="signup"></a>
-        <a class="hiddenanchor" id="signin"></a>
-
-        <div class="login_wrapper">
-            <div class="animate form login_form">
-                <section class="login_content">
-                    <form autocomplete="off" method="POST" action="<?= base_url('admin/login/auth') ?>">
-                        <h1>Login Form</h1>
-                        <div>
-                            <input name="UserName" type="text" class="form-control" placeholder="Username" required />
+<body class="c-app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <form autocomplete="off" method="POST" action="<?= base_url('login/auth') ?>">
+                                <h1>Login</h1>
+                                <p class="text-muted">Sign In to your account</p>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="c-icon cil-user"></i> 
+                                        </span>
+                                    </div>
+                                    <input name="UserName" class="form-control" type="text" placeholder="Username">
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="c-icon cil-lock-locked"></i>
+                                        </span>
+                                    </div>
+                                    <input name="Password" class="form-control" type="password" placeholder="Password">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary px-4" type="button">Login</button>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div>
-                            <input name="Password" type="password" class="form-control" placeholder="Password" required />
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary submit">Log in</button>
-                        </div>
-
-                        <div class="clearfix"></div>
-                    </form>
-                </section>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <?php if ($msg = $this->session->flashdata('msg')) : ?>
-        <script>
-            const msg = <?= json_encode($msg); ?>;
-
-            Swal.fire({
-                title: msg.title,
-                icon: msg.icon,
-                text: msg.text
-            })
-        </script>
-    <?php endif ?>
+    <?php $this->load->view('admin/layout/_scripts') ?>
+    <?php $this->load->view('admin/layout/_msg') ?>
 </body>
 
 </html>
