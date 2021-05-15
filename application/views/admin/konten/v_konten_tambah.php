@@ -1,6 +1,6 @@
         <h3 class="mb-4">
             <a class="text-secondary" href="javascript:history.back()" title="Kembali"><i class="fa fa-arrow-circle-left"></i></a>
-            Tambah Data <?= $jenisKonten ?>
+            <?= isset($data) ? 'Edit' : 'Tambah' ?> Data <?= $jenisKonten ?>
         </h3>
 
 
