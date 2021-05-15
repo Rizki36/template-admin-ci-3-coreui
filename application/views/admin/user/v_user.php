@@ -1,3 +1,8 @@
+<h3 class="d-inline-block mb-4">
+    <i class="fa fa-users"></i> User
+</h3>
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -83,7 +88,7 @@
 
 <!-- modal detail -->
 <div id="modal-detail" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><i class="fa fa-info"></i> Detail User</h5>
@@ -92,13 +97,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <img id="img">
-                    </div>
-                    <div class="col-sm-9">
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -142,9 +140,50 @@
                     UserName: id
                 },
                 dataType: 'JSON',
-                success: function(response) {
-                    modal.find('#img').attr("src", `${base_url}/assets/admin/img/users/${response.Foto}`);
+                success: function(res) {
+                    var text = `
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img class="img-fluid" id="img" src="${base_url}/assets/admin/img/users/${res.Foto}">
+                        </div>
+                        <div class="col-sm-9">
+                            <table class="table table-sm table-borderless">
+                                <tr>   
+                                    <td>NIK</td>
+                                    <td>:</td>
+                                    <td>${res.NIK}</td>
+                                </tr>           
+                                <tr>   
+                                    <td width="120">UserName</td>
+                                    <td width="30">:</td>
+                                    <td>${res.UserName}</td>
+                                </tr>                            
+                                <tr>   
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td>${res.NamaUser}</td>
+                                </tr>           
+                                <tr>   
+                                    <td>Alamat</td>
+                                    <td>:</td>
+                                    <td>${res.Alamat}</td>
+                                </tr>           
+                                <tr>   
+                                    <td>TTL</td>
+                                    <td>:</td>
+                                    <td>${res.TempatLahir}, ${res.TglLahir}</td>
+                                </tr>           
+                                <tr>   
+                                    <td>Password</td>
+                                    <td>:</td>
+                                    <td>${res.Password}</td>
+                                </tr>           
+                            </table>                 
+                        </div>
+                    </div>
+                    `
 
+                    modal.find('.modal-body').html(text);
                 }
             });
         });

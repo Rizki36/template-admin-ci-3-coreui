@@ -182,7 +182,8 @@ class user extends CI_Controller
     {
         $UserName = $this->input->get('UserName');
         $data = $this->M_User->get_one_user("UserName = '$UserName'");
-
+        $data->TglLahir = date_indo(date('Y-m-d', strtotime($data->TglLahir)));
+        $data->Password = base64_decode($data->Password);
         echo $data ? json_encode($data) : json_encode(array());
     }
 
